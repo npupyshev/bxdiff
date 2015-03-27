@@ -1,0 +1,8 @@
+CC = clang
+CFLAGS = -arch x86_64 -arch i386 -I/opt/local/include -llzma
+
+all:
+        $(CC) $(CFLAGS) main.c -o bxdiff
+
+install:
+        cp bxdiff /usr/bin
