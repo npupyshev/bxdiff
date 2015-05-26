@@ -25,7 +25,7 @@
 #include "bxdiff.h"
 
 void *decompress (void *compressed_data, size_t size, size_t *dsize);
-static uint64_t parse_integer(uint64_t integer);
+static int64_t parse_integer(uint64_t integer);
 
 FILE *in_file;
 size_t in_file_size = 0;
@@ -35,7 +35,6 @@ size_t patch_file_size;
 
 void *control_block, *diff_block, *extra_block = NULL;
 size_t control_block_size, diff_block_size, extra_block_size = 0;
-static uint64_t parse_integer(uint64_t integer);
 
 int main(int argc, const char * argv[]) {
     if (argc < 4) {
@@ -110,9 +109,9 @@ int main(int argc, const char * argv[]) {
     while (control_block_pointer < control_block_size) {
         //Yes, I like typedefing structs:)
         BXTriple *triple = (control_block + control_block_pointer);
-        uint64_t copylen = parse_integer(triple->copylen);
-        uint64_t mixlen = parse_integer(triple->mixlen);
-        uint64_t seeklen = parse_integer(triple->seeklen);
+        int64_t copylen = parse_integer(triple->copylen);
+        int64_t mixlen = parse_integer(triple->mixlen);
+        int64_t seeklen = parse_integer(triple->seeklen);
         uint8_t file_byte = 0;
         uint8_t out_byte;
         printf("%llu %llu %llu\n", mixlen, copylen, seeklen);
@@ -130,7 +129,7 @@ int main(int argc, const char * argv[]) {
         extra_block_pointer += copylen;
         
         //Advance the read pointer by seeklen bytes
-        fseek(in_file, (uint32_t)seeklen, SEEK_CUR);
+        fseek(in_file, (int32_t)seeklen, SEEK_CUR);
         
         //Advance control block read pointer
         control_block_pointer += sizeof(BXTriple);
