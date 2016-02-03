@@ -65,8 +65,8 @@ static void print_hex(const void *, size_t);
 static int SHA1_File(FILE *, uint8_t *);
 
 int main(int argc, const char * argv[]) {
-    if (argc < 4) {
-        puts("Usage: bxpatch <in_file> <out_file> <patch_file>");
+    if (argc != 4) {
+        puts("usage: bxpatch oldfile newfile patchfile");
         return 0;
     }
 	
@@ -324,7 +324,7 @@ static int SHA1_File(FILE *f, uint8_t *dst) {
 
 static uint64_t parse_integer(uint64_t integer)
 {
-    uint8_t *buf = (uint8_t *)&integer;
+    uint8_t *buf = (u_char *)&integer;
     uint64_t y;
     
     y = buf[7] & 0x7F;

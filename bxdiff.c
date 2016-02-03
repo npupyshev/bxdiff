@@ -253,7 +253,7 @@ int main(int argc,char *argv[])
 	lzma_ret ret = LZMA_OK;
 	uint8_t sha[SHA_DIGEST_LENGTH];
 	
-	if(argc!=4) errx(1,"usage: %s oldfile newfile patchfile\n",argv[0]);
+	if(argc!=4) errx(1,"usage: bxdiff oldfile newfile patchfile");
 	
 	/* Allocate oldsize+1 bytes instead of oldsize bytes to ensure
 		that we never try to malloc(0) and get a NULL pointer */
