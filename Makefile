@@ -1,6 +1,10 @@
-CC = clang
-CFLAGS = -arch armv7 -arch arm64 -I/opt/local/include -llzma -Wall -miphoneos-version-min=5.0
+CC = gcc
+CFLAGS = -arch x86_64 -I/usr/local/include -lcrypto -llzma
 
 all:
-	xcrun -sdk iphoneos $(CC) $(CFLAGS) main.c -o bxpatch
-	ldid -S bxpatch
+	$(CC) $(CFLAGS) bxpatch.c -o bxpatch
+	$(CC) $(CFLAGS) bxdiff.c lzmaio.c -o bxdiff
+
+install:
+	cp bxpatch /usr/local/bin
+	cp bxdiff /usr/local/bin
