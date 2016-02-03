@@ -1,5 +1,5 @@
 /*
- * Copyright 2014, Pupyshev Nikita. <npupyshev@icloud.com>
+ * Copyright 2014-2016, Pupyshev Nikita. <npupyshev@icloud.com>
  * All rights reserved
  *
  * Redistribution and use in source and binary forms, with or without
