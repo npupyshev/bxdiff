@@ -1,6 +1,6 @@
 # bxdiff/bxpatch
 Patching utility that uses BXDIFF40 and BXDIFF41 patch format.
-Uses XZ Tools LZMA library for decompression.
+Uses XZ Tools LZMA library.
 
 # usage
 bxpatch <in file> <out file> <bxdiff patch file>
