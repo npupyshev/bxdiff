@@ -324,7 +324,7 @@ static int SHA1_File(FILE *f, uint8_t *dst) {
 
 static uint64_t parse_integer(uint64_t integer)
 {
-    uint8_t *buf = (u_char *)&integer;
+    uint8_t *buf = (uint8_t *)&integer;
     uint64_t y;
     
     y = buf[7] & 0x7F;
