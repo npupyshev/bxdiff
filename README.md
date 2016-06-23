@@ -12,5 +12,5 @@ bxpatch <in file> <out file> <bxdiff patch file>
 3. libcrypto
 
 # build
-- make # build for iOS
-- make -f Makefile.osx # build for OS X
+- make # build for OS X
+- make -f Makefile.ios # build for iOS
